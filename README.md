@@ -4,7 +4,7 @@
 
 Aplikacja umożliwiająca tworzenie różnego typu wykresów, wykorzystująca web scraping ze strony IMDb. Użytkownik będzie miał możliwość filtrowania zakresu danych oraz ich kategorii. Dodatkowo wygląd oraz typ wykresu będą mogły być modyfikowane.
 
-### 5. Etap 5 - Wybranie systemu kontroli wersji oraz platformy hostingu dla niej, &nbsp;&nbsp;&nbsp;&nbsp;utworzenie repozytorium
+### 5. Etap 5 - Wybranie systemu kontroli wersji oraz platformy hostingu dla niej, utworzenie repozytorium
 
 Systemem kontroli wersji użytym w projekcie został **Git**. Głównymi powodami wyboru tego systemu są:
 
