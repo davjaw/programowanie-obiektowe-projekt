@@ -94,6 +94,6 @@ Jako platformę hostingową dla systemu kontroli wersji wybrano **GitHub**. Wyb�
 Metodyką zarządzania naszym projektem jest metodyka programowania zwinnego - kanban.
 Pozwala śledzić postępy prac nad projektem. Wszystkie zadania poruszają się zgodnie z
 przepływem w jednym i przechodzą przez kolejne etapy takie jak: do zrobienia, praca w toku oraz zrobione. 
-![Tablica Jira](./img/kanban-board.png)
+![Tablica Jira](./img/kanban-board-dark.png)
 **Raport z metodologii programowania zwinnego**
-![Raport Jira](./img/kanban-flow-diagram.png)
+![Raport Jira](./img/kanban-flow-diagram-dark.png)
