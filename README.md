@@ -88,4 +88,13 @@ Systemem kontroli wersji użytym w projekcie został **Git**. Głównymi powodam
 
 Jako platformę hostingową dla systemu kontroli wersji wybrano **GitHub**. Wybór ten został uwarunkowany jej popularnością, wcześniejszym doświadczeniem z nią oraz szeroką gamą funkcjonalności umożliwiającymi w sposób wydajny rozwój własnego oprogramowania.
 
-![Repozytorium na GitHub](github.png)
+![Repozytorium na GitHub](./img/github.png)
+
+### 6. Etap 6- Metodyka programowania zwinnego
+Metodyką zarządzania naszym projektem jest metodyka programowania zwinnego - kanban.
+Pozwala śledzić postępy prac nad projektem. Wszystkie zadania poruszają się zgodnie z
+przepływem w jednym i przechodzą przez kolejne etapy takie jak: analiza, praca w toku,
+testowanie oraz wdrożenie. 
+![Tablica Jira](./img/kanban-board.png)
+**Raport z metodologii programowania zwinnego**
+![Raport Jira](./img/kanban-flow-diagram.png)
