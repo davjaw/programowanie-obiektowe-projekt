@@ -15,4 +15,4 @@ Systemem kontroli wersji użytym w projekcie został **Git**. Głównymi powodam
 
 Jako platformę hostingową dla systemu kontroli wersji wybrano **GitHub**. Wybór ten został uwarunkowany jej popularnością, wcześniejszym doświadczeniem z nią oraz szeroką gamą funkcjonalności umożliwiającymi w sposób wydajny rozwój własnego oprogramowania.
 
-![Repozytorium na GitHub](github.png){width=50px}
+![Repozytorium na GitHub](github.png)
