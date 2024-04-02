@@ -53,18 +53,29 @@ Aplikacja umożliwiająca tworzenie różnego typu wykresów, wykorzystująca we
 - Analizowania danych z innych stron,
 - Analizowania danych z plików zewnętrznych 
 
-### 3. Etap 3 - Diagram przypadków użycia
+### 4. Etap 4 - Wymagania funkcjonalne i niefunkcjonalne
+**FURPS - functionality, usability, reliability, performance and supportability** 
 
-```mermaid
-graph TD
-subgraph "Aplikacja"
-    A(Wybór typu wykresu) <-->|extend| B(Wybór zakresu danych)
-    B <-->|extend| C(Pobieranie danych z serwisu)
-    C <-->|extend| D(Wyświetlenie wyników)
-    D -->|include| E(Modyfikacja danych do wykresu)
-    E <-->|extend| C
-end
-```
+Functionality: 
+- Wybór danych 
+- Wyświetlenie wykresów 
+- Modyfikacje danych na wykresach 
+
+Usability: 
+- Czytelność i przejrzystość 
+- Prostota w użyciu 
+
+Reliability: 
+- Stabilność działania komponentów aplikacji poprzez stosowanie zintegrowanych narzędzi programistycznych (Flask) 
+- Obsługa wyjątków 
+
+Performance: 
+- Optymalizacja działania aplikacji 
+- Wydajne przechwytywanie danych ze strony (web scraping) 
+
+Supportability: 
+- Możliwość rozbudowywania aplikacji w przyszłości dzięki modułowej strukturze 
+- Intuicyjna struktura aplikacji wykorzystująca wzorce projektowe 
 
 ### 5. Etap 5 - Wybranie systemu kontroli wersji oraz platformy hostingu dla niej, utworzenie repozytorium
 
