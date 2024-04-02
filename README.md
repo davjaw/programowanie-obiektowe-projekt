@@ -48,13 +48,13 @@ Aplikacja umożliwiająca tworzenie różnego typu wykresów, wykorzystująca we
 - Zmiana wyglądu wykresu,
 - Wybór reżysera
 
-
 **WON’T have (aplikacja na razie nie będzie zawierać):**
 - Analizowania danych z innych stron,
 - Analizowania danych z plików zewnętrznych 
 
 ### 4. Etap 4 - Wymagania funkcjonalne i niefunkcjonalne
 **FURPS - functionality, usability, reliability, performance and supportability** 
+### 3. Etap 3 - Diagram przypadków użycia (Use Case)
 
 Functionality: 
 - Wybór danych 
