@@ -53,6 +53,19 @@ Aplikacja umożliwiająca tworzenie różnego typu wykresów, wykorzystująca we
 - Analizowania danych z innych stron,
 - Analizowania danych z plików zewnętrznych 
 
+### 3. Etap 3 - Diagram przypadków użycia
+
+```mermaid
+graph TD
+subgraph "Aplikacja"
+    A(Wybór typu wykresu) <-->|extend| B(Wybór zakresu danych)
+    B <-->|extend| C(Pobieranie danych z serwisu)
+    C <-->|extend| D(Wyświetlenie wyników)
+    D -->|include| E(Modyfikacja danych do wykresu)
+    E <-->|extend| C
+end
+```
+
 ### 5. Etap 5 - Wybranie systemu kontroli wersji oraz platformy hostingu dla niej, utworzenie repozytorium
 
 Systemem kontroli wersji użytym w projekcie został **Git**. Głównymi powodami wyboru tego systemu są:
