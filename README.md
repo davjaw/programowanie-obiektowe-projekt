@@ -51,7 +51,20 @@ Aplikacja umożliwiająca tworzenie różnego typu wykresów, wykorzystująca we
 
 **WON’T have (aplikacja na razie nie będzie zawierać):**
 - Analizowania danych z innych stron,
-- Analizowania danych z plików zewnętrznych 
+- Analizowania danych z plików zewnętrznych
+
+ ### 3. Etap 3 - Diagram przypadków użycia
+
+```mermaid
+graph TD
+subgraph "Aplikacja"
+    A(Wybór typu wykresu) <-->|extend| B(Wybór zakresu danych)
+    B <-->|extend| C(Pobieranie danych z serwisu)
+    C <-->|extend| D(Wyświetlenie wyników)
+    D -->|include| E(Modyfikacja danych do wykresu)
+    E <-->|extend| C
+end
+```
 
 ### 4. Etap 4 - Wymagania funkcjonalne i niefunkcjonalne
 **FURPS - functionality, usability, reliability, performance and supportability** 
