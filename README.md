@@ -7,7 +7,7 @@ Aplikacja umożliwiająca tworzenie różnego typu wykresów, wykorzystująca we
 ### 2. Etap 2 - Analiza MoSCoW
 **MUST have (aplikacja będzie zawierać):**
 - Wybór wykresów (kołowy, słupkowy, punktowy), 
-- Modyfikacje danych wykresów ,
+- Modyfikacje danych wykresów,
 - Wybór gatunków,
 - Wybór rocznika filmów, 
 - Określenie ocen
@@ -67,24 +67,24 @@ end
 **FURPS - functionality, usability, reliability, performance and supportability** 
 
 Functionality: 
-- Wybór danych 
-- Wyświetlenie wykresów 
+- Wybór danych,
+- Wyświetlenie wykresów,
 - Modyfikacje danych na wykresach 
 
 Usability: 
-- Czytelność i przejrzystość 
+- Czytelność i przejrzystość,
 - Prostota w użyciu 
 
 Reliability: 
-- Stabilność działania komponentów aplikacji poprzez stosowanie zintegrowanych narzędzi programistycznych (Flask) 
+- Stabilność działania komponentów aplikacji poprzez stosowanie zintegrowanych narzędzi programistycznych (Flask),
 - Obsługa wyjątków 
 
 Performance: 
-- Optymalizacja działania aplikacji 
+- Optymalizacja działania aplikacji,
 - Wydajne przechwytywanie danych ze strony (web scraping) 
 
 Supportability: 
-- Możliwość rozbudowywania aplikacji w przyszłości dzięki modułowej strukturze 
+- Możliwość rozbudowywania aplikacji w przyszłości dzięki modułowej strukturze,
 - Intuicyjna struktura aplikacji wykorzystująca wzorce projektowe 
 
 ### 5. Etap 5 - Wybranie systemu kontroli wersji oraz platformy hostingu dla niej, utworzenie repozytorium
@@ -94,7 +94,7 @@ Systemem kontroli wersji użytym w projekcie został **Git**. Głównymi powodam
 - możliwość jednoczesnej pracy przy kodzie przez kilka osób,
 - transferowanie oraz łączenie zmian z różnych branchy,
 - szybkość oraz wydajność systemu,
-- możliwość pracy offline we własnym repozytorium.
+- możliwość pracy offline we własnym repozytorium
 
 Jako platformę hostingową dla systemu kontroli wersji wybrano **GitHub**. Wybór ten został uwarunkowany jej popularnością, wcześniejszym doświadczeniem z nią oraz szeroką gamą funkcjonalności umożliwiającymi w sposób wydajny rozwój własnego oprogramowania.
 
