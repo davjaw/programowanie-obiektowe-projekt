@@ -120,7 +120,12 @@ przepływem w jednym i przechodzą przez kolejne etapy takie jak: do zrobienia, 
 **Raport z metodologii programowania zwinnego**
 ![Raport Jira](./img/kanban-flow-diagram-dark.png)
 
-### 7. Etap 2.2 - Opracowanie koncepcji wizualnej programu
+
+### 7. Etap 2.1 - Projekt zawierający wybrane funkcjonalności
+
+Projekt obejmuje funkcjonalności związane z pobieraniem danych z witryny IMDB za pomocą web scrappera, takie jak tytuł, rok produkcji, ocena, ilość opinii oraz miejsce w rankingu. Projekt zawiera również interfejs użytkownika (UI), który jest umieszczony w folderze "view". Obecnie interfejs ten nie zawiera implementacji wykresów ani danych.
+
+### 8. Etap 2.2 - Opracowanie koncepcji wizualnej programu
 
 Koncepcję wizualna programu została opracowana na platformie Figma.<br /> [Wizualizacja](https://www.figma.com/proto/JAzi0V8gRFwkpm3iEuh7k8/ProgOb?node-id=1-2&t=nu1ARWDHplEJ1MEY-1&scaling=contain&page-id=0%3A1&starting-point-node-id=1%3A2) została podzielona na siedem okien, co widać na załączonym obrazku. Użytkownik może wybrać dany typ wykresu oraz jakie dane będą brane pod uwagę. Cała aplikacja polega na web scraping'u bazy IMDb i wyświetlaniu poszczególnych wykresów.
 
