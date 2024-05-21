@@ -143,6 +143,6 @@ Interfejs użytkownika obejmuje następujące ekrany:
 
 ![wizualizacja aplikacji](img/figma.png)
 
-### 8. Etap 2.3 - Raport ze stosowania metodologii programowania zwinnego
+### 9. Etap 2.3 - Raport ze stosowania metodologii programowania zwinnego
 **Raport z metodologii programowania zwinnego**
 ![Raport Jira](./img/kanban-flow-diagram-dark-etap2.png)
