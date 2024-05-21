@@ -137,3 +137,7 @@ Interfejs użytkownika obejmuje następujące ekrany:
    Projekt ma na celu ułatwienie analizy danych filmowych z IMDb poprzez intuicyjną i estetyczną wizualizację.
 
 ![wizualizacja aplikacji](img/figma.png)
+
+### 8. Etap 2.3 - Raport ze stosowania metodologii programowania zwinnego
+**Raport z metodologii programowania zwinnego**
+![Raport Jira](./img/kanban-flow-diagram-dark-etap2.png)
