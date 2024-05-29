@@ -10,7 +10,7 @@ from selenium.webdriver.chrome.options import Options
 
 
 def main():
-    csv_filename = "../scrapedMovies/imdb.csv"
+    csv_filename = "./scrapedMovies/imdb.csv"
     if os.path.exists(csv_filename) == False:
         os.makedirs(os.path.dirname(csv_filename))
         with open(csv_filename, mode='x', ) as f:
@@ -84,7 +84,7 @@ def main():
                     amount = "N/A"
 
                 writer.writerow([genre, name, year, rating, amount])
-
+    driver.quit()
 
 if __name__ == "__main__":
     main()
