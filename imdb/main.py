@@ -56,7 +56,7 @@ def main():
         soup = BeautifulSoup(page_source, "html.parser")
         movies = soup.find_all("li", class_="ipc-metadata-list-summary-item")
 
-        with open(csv_filename, mode='w', newline="", encoding="utf-8-sig") as csvfile:
+        with open(csv_filename, mode='a', newline="", encoding="utf-8-sig") as csvfile:
             writer = csv.writer(csvfile)
             header = ['Genre', 'Name', 'Year', 'Rating', "Rating amount"]
             writer.writerow(header)
