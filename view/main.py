@@ -18,7 +18,7 @@ frame.grid(row=3, column=0, columnspan=6, rowspan=6, padx=20, pady=20, sticky="n
 pie1 = CTkCheckBox(root, text="% Ocen w przedziale gatunków")
 pie2 = CTkCheckBox(root, text="% Ocen w przedziale lat")
 pie3 = CTkCheckBox(root, text="% Gatunków w przedziale lat",command=lambda: plot_chart("genre_distribution",frame, pie3))
-bar1 = CTkCheckBox(root, text="Średnia ocen na każdy gatunek")
+bar1 = CTkCheckBox(root, text="Średnia ocen na każdy gatunek",command=lambda: plot_chart("avg_rating_per_genre",frame, bar1))
 bar2 = CTkCheckBox(root, text="Średnia ocen na każdy rok", command=lambda: plot_chart("total_ratings_per_year",frame, bar2))
 point1 = CTkCheckBox(root, text="Ilość wszystkich opinii na kazdy rok")
 point2 = CTkCheckBox(root, text="Rozkład procentowy gatunków na kazdy rok")

@@ -23,6 +23,9 @@ def convert_rating_amount(amount):
 
 data['Rating amount'] = data['Rating amount'].apply(convert_rating_amount)
 
+# Convert the 'Rating' column to numeric, forcing errors to NaN
+data['Rating'] = pd.to_numeric(data['Rating'], errors='coerce')
+
 # Base class for charts
 class ChartStrategy:
     def __init__(self, frame, data):
