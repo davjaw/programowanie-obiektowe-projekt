@@ -133,7 +133,6 @@ class GenrePercentagePerYearChart(ChartStrategy):
         ax.set_xlabel('Year', color="white")
         ax.set_ylabel('Percentage', color="white")
         ax.set_title('Genre Percentage per Year', color="white")
-        ax.legend()
         ax.tick_params(colors='white')
         for spine in ax.spines.values():
             spine.set_edgecolor('white')
@@ -142,7 +141,17 @@ class GenrePercentagePerYearChart(ChartStrategy):
         canvas = FigureCanvasTkAgg(fig, master=self.frame)
         canvas.draw()
         canvas.get_tk_widget().configure(background='#1b243a')
-        canvas.get_tk_widget().pack(side="left", fill=tk.BOTH, expand=1)
+        canvas.get_tk_widget().pack(side="top", fill=tk.BOTH, expand=1)
+
+        # Create legend outside of the chart below it
+        handles, labels = ax.get_legend_handles_labels()
+        fig_legend = plt.figure(figsize=(10, 0.5))
+        fig_legend.legend(handles, labels, loc='upper center', ncol=5, fontsize='small', facecolor='#1b243a', edgecolor='white', labelcolor="white")
+        fig_legend.patch.set_facecolor('#1b243a')
+        canvas_legend = FigureCanvasTkAgg(fig_legend, master=self.frame)
+        canvas_legend.draw()
+        canvas_legend.get_tk_widget().configure(background='#1b243a')
+        canvas_legend.get_tk_widget().pack(side="top", fill=tk.BOTH, expand=1)
 
 # Concrete strategy for Total Ratings per Year Scatter Plot
 class TotalRatingsPerYearChart(ChartStrategy):
@@ -150,10 +159,24 @@ class TotalRatingsPerYearChart(ChartStrategy):
         # Clear previous content in the frame
         for widget in self.frame.winfo_children():
             widget.destroy()
-
+        
         # Sum the rating amounts by year
         ratings_per_year = self.data.groupby('Year')['Rating amount'].sum().reset_index()
 
+        def format_yaxis_shorten(x, pos):
+            if x >= 1e15:
+                return f'{x / 1e15:.1f}Q'
+            elif x >= 1e12:
+                return f'{x / 1e12:.1f}T'
+            elif x >= 1e9:
+                return f'{x / 1e9:.1f}B'
+            elif x >= 1e6:
+                return f'{x / 1e6:.1f}M'
+            elif x >= 1e3:
+                return f'{x / 1e3:.1f}K'
+            else:
+                return f'{x:.0f}'
+            
         # Create the scatter plot
         fig, ax = plt.subplots(figsize=(6, 6))
         ax.set_facecolor("#1b243a")
@@ -164,6 +187,10 @@ class TotalRatingsPerYearChart(ChartStrategy):
         ax.tick_params(colors='white')
         for spine in ax.spines.values():
             spine.set_edgecolor('white')
+
+        # Set custom formatter for y-axis labels
+        formatter = FuncFormatter(format_yaxis_shorten)
+        ax.yaxis.set_major_formatter(formatter)
 
         fig.patch.set_facecolor('#1b243a')
         canvas = FigureCanvasTkAgg(fig, master=self.frame)
