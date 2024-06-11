@@ -5,7 +5,6 @@ from customtkinter import *
 sys.path.append("..")
 
 from controller.main import plot_chart
-
 root = CTk()
 root.title("Python project")
 root.geometry("1000x1000")
@@ -57,5 +56,7 @@ CTkButton(root, text="Słupkowy", anchor="center", text_color="white", fg_color=
           font=("Quicksand", 20), command=barcharts).grid(row=1, column=2, columnspan=2, pady=(0,50))
 CTkButton(root, text="Punktowy", anchor="center", text_color="white", fg_color="#C0256F", corner_radius=150,
           font=("Quicksand", 20), command=pointcharts).grid(row=1, column=4, columnspan=2, padx=(0, 225), pady=(0,50))
+CTkButton(root, text="Zamknij", anchor="center", text_color="white", fg_color="#C0256F", corner_radius=150,
+          font=("Quicksand", 20), command=root.quit).grid(row=9, column=2, columnspan=2, pady=(10, 0))
 
 root.mainloop()
