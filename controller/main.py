@@ -38,9 +38,12 @@ class ChartStrategy:
 # Concrete strategy for Average Rating per Year Chart
 class AvgRatingPerYearChart(ChartStrategy):
     def plot(self):
-        # Clear previous content in the frame
-        for widget in self.frame.winfo_children():
-            widget.destroy()
+        # Check if self.frame is not None
+        if self.frame is not None:
+            # Clear previous content in the frame
+            for widget in self.frame.winfo_children():
+                widget.destroy()
+
 
         # Calculate the average rating by year
         avg_rating_per_year = self.data.groupby('Year')['Rating'].mean().reset_index()
@@ -62,13 +65,16 @@ class AvgRatingPerYearChart(ChartStrategy):
         canvas.draw()
         canvas.get_tk_widget().configure(background='#1b243a')
         canvas.get_tk_widget().pack(side="left", fill=tk.BOTH, expand=1)
+        return len(fig.get_children())
 
 # Concrete strategy for Average Rating per Genre Chart
 class AvgRatingPerGenreChart(ChartStrategy):
     def plot(self):
-        # Clear previous content in the frame
-        for widget in self.frame.winfo_children():
-            widget.destroy()
+        # Check if self.frame is not None
+        if self.frame is not None:
+            # Clear previous content in the frame
+            for widget in self.frame.winfo_children():
+                widget.destroy()
 
         # Calculate the average rating for each genre
         avg_rating_per_genre = self.data.groupby('Genre')['Rating'].mean().reset_index()
@@ -90,13 +96,16 @@ class AvgRatingPerGenreChart(ChartStrategy):
         canvas.draw()
         canvas.get_tk_widget().configure(background='#1b243a')
         canvas.get_tk_widget().pack(side="left", fill=tk.BOTH, expand=1)
+        return len(fig.get_children())
 
 # Concrete strategy for Genre Distribution Chart
 class GenreDistributionChart(ChartStrategy):
     def plot(self):
-        # Clear previous content in the frame
-        for widget in self.frame.winfo_children():
-            widget.destroy()
+        # Check if self.frame is not None
+        if self.frame is not None:
+            # Clear previous content in the frame
+            for widget in self.frame.winfo_children():
+                widget.destroy()
 
         # Calculate the percentage of each genre
         genre_counts = self.data['Genre'].value_counts(normalize=True) * 100
@@ -112,13 +121,16 @@ class GenreDistributionChart(ChartStrategy):
         canvas.draw()
         canvas.get_tk_widget().configure(background='#1b243a')
         canvas.get_tk_widget().pack(side="left", fill=tk.BOTH, expand=1)
+        return len(fig.get_children())
 
 # Concrete strategy for Percentage Distribution of Each Genre per Year
 class GenrePercentagePerYearChart(ChartStrategy):
     def plot(self):
-        # Clear previous content in the frame
-        for widget in self.frame.winfo_children():
-            widget.destroy()
+        # Check if self.frame is not None
+        if self.frame is not None:
+            # Clear previous content in the frame
+            for widget in self.frame.winfo_children():
+                widget.destroy()
 
         # Calculate the percentage distribution of each genre per year
         genre_percentage_per_year = self.data.groupby(['Year', 'Genre']).size().unstack(fill_value=0)
@@ -152,13 +164,16 @@ class GenrePercentagePerYearChart(ChartStrategy):
         canvas_legend.draw()
         canvas_legend.get_tk_widget().configure(background='#1b243a')
         canvas_legend.get_tk_widget().pack(side="top", fill=tk.BOTH, expand=1)
+        return len(fig.get_children())
 
 # Concrete strategy for Total Ratings per Year Scatter Plot
 class TotalRatingsPerYearChart(ChartStrategy):
     def plot(self):
-        # Clear previous content in the frame
-        for widget in self.frame.winfo_children():
-            widget.destroy()
+        # Check if self.frame is not None
+        if self.frame is not None:
+            # Clear previous content in the frame
+            for widget in self.frame.winfo_children():
+                widget.destroy()
         
         # Sum the rating amounts by year
         ratings_per_year = self.data.groupby('Year')['Rating amount'].sum().reset_index()
@@ -197,14 +212,16 @@ class TotalRatingsPerYearChart(ChartStrategy):
         canvas.draw()
         canvas.get_tk_widget().configure(background='#1b243a')
         canvas.get_tk_widget().pack(side="left", fill=tk.BOTH, expand=1)
+        return len(fig.get_children())
 
 # Concrete strategy for Percentage of Ratings Based on Genre Pie Chart
 class RatingsPercentagePerGenreChart(ChartStrategy):
     def plot(self):
-        # Clear previous content in the frame
-        for widget in self.frame.winfo_children():
-            widget.destroy()
-
+        # Check if self.frame is not None
+        if self.frame is not None:
+            # Clear previous content in the frame
+            for widget in self.frame.winfo_children():
+                widget.destroy()
         # Calculate the percentage of ratings for each genre
         ratings_per_genre = self.data.groupby('Genre')['Rating amount'].sum()
         ratings_percentage_per_genre = (ratings_per_genre / ratings_per_genre.sum()) * 100
@@ -220,13 +237,16 @@ class RatingsPercentagePerGenreChart(ChartStrategy):
         canvas.draw()
         canvas.get_tk_widget().configure(background='#1b243a')
         canvas.get_tk_widget().pack(side="left", fill=tk.BOTH, expand=1)
+        return len(fig.get_children())
 
 # Concrete strategy for Percentage of Ratings in a Year Pie Chart
 class RatingsPercentagePerYearChart(ChartStrategy):
     def plot(self):
-        # Clear previous content in the frame
-        for widget in self.frame.winfo_children():
-            widget.destroy()
+        # Check if self.frame is not None
+        if self.frame is not None:
+            # Clear previous content in the frame
+            for widget in self.frame.winfo_children():
+                widget.destroy()
 
         # Calculate the percentage of ratings for each year
         ratings_per_year = self.data.groupby('Year')['Rating amount'].sum()
@@ -243,30 +263,32 @@ class RatingsPercentagePerYearChart(ChartStrategy):
         canvas.draw()
         canvas.get_tk_widget().configure(background='#1b243a')
         canvas.get_tk_widget().pack(side="left", fill=tk.BOTH, expand=1)
+        return len(fig.get_children())
 
 # Function to plot chart based on the selected strategy
 def plot_chart(chart_type, frame, checkbox):
-    if checkbox.get() == 0:
-        for widget in frame.winfo_children():
-            widget.destroy()
-        return
-
-    if chart_type == "avg_rating_per_year":
-        strategy = AvgRatingPerYearChart(frame, data)
-    elif chart_type == "avg_rating_per_genre":
-        strategy = AvgRatingPerGenreChart(frame, data)
-    elif chart_type == "genre_distribution":
-        strategy = GenreDistributionChart(frame, data)
-    elif chart_type == "genre_percentage_per_year":
-        strategy = GenrePercentagePerYearChart(frame, data)
-    elif chart_type == "total_ratings_per_year":
-        strategy = TotalRatingsPerYearChart(frame, data)
-    elif chart_type == "ratings_percentage_per_genre":
-        strategy = RatingsPercentagePerGenreChart(frame, data)
-    elif chart_type == "ratings_percentage_per_year":
-        strategy = RatingsPercentagePerYearChart(frame, data)
+    if checkbox is not None:
+        if checkbox.get() == 0:
+            for widget in frame.winfo_children():
+                widget.destroy()
+            return
     else:
-        return
-
-    strategy.plot()
+        if chart_type == "avg_rating_per_year":
+            strategy = AvgRatingPerYearChart(frame, data)
+        elif chart_type == "avg_rating_per_genre":
+            strategy = AvgRatingPerGenreChart(frame, data)
+        elif chart_type == "genre_distribution":
+            strategy = GenreDistributionChart(frame, data)
+        elif chart_type == "genre_percentage_per_year":
+            strategy = GenrePercentagePerYearChart(frame, data)
+        elif chart_type == "total_ratings_per_year":
+            strategy = TotalRatingsPerYearChart(frame, data)
+        elif chart_type == "ratings_percentage_per_genre":
+            strategy = RatingsPercentagePerGenreChart(frame, data)
+        elif chart_type == "ratings_percentage_per_year":
+            strategy = RatingsPercentagePerYearChart(frame, data)
+        else:
+            return
+        strategy.plot()
+        return strategy.plot()
 
