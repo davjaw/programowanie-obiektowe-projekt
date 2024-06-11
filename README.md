@@ -1,5 +1,7 @@
 # programowanie-obiektowe-projekt
 
+# Etap I
+
 ### 1. Etap 1.1 - Opis słowny działania programu
 
 Aplikacja umożliwiająca tworzenie różnego typu wykresów, wykorzystująca web scraping ze strony IMDb. Użytkownik będzie miał możliwość filtrowania zakresu danych oraz ich kategorii. Dodatkowo wygląd oraz typ wykresu będą mogły być modyfikowane.
@@ -121,6 +123,9 @@ przepływem w jednym i przechodzą przez kolejne etapy takie jak: do zrobienia, 
 ![Raport Jira](./img/kanban-flow-diagram-dark.png)
 
 
+# Etap II
+
+
 ### 7. Etap 2.1 - Projekt zawierający wybrane funkcjonalności
 
 Projekt obejmuje funkcjonalności związane z pobieraniem danych z witryny IMDB za pomocą web scrappera, takie jak tytuł, rok produkcji, ocena, ilość opinii oraz miejsce w rankingu. Projekt zawiera również interfejs użytkownika (UI), który jest umieszczony w folderze "view". Obecnie interfejs ten nie zawiera implementacji wykresów ani danych.
@@ -146,3 +151,57 @@ Interfejs użytkownika obejmuje następujące ekrany:
 ### 9. Etap 2.3 - Raport ze stosowania metodologii programowania zwinnego
 **Raport z metodologii programowania zwinnego**
 ![Raport Jira](./img/kanban-flow-diagram-dark-etap2.png)
+
+
+# Etap III
+
+### 10. Etap 3.1 - Opis programu
+
+Aplikacja składa się z trzech integralnych części zgodnie z założeniami wzorca projektowego MVC:
+
+Model:
+Obsługuje data scrapping ze strony imdb.com i zapisywanie danych do pliku .csv.
+
+View:
+Implementuje graficzny interfejs użytkownika z użyciem biblioteki Tkinter.
+
+Controller:
+Odpowiada za tworzenie wykresów w oparciu o dane z pliku .csv oraz biblioteki Pythona.
+
+### 11. Etap 3.2 - Zastosowane technologie
+
+
+Python -  wszechstronny, wysokopoziomowy język programowania, znany ze swojej czytelności i prostoty składni. Dzięki szerokiemu ekosystemowi bibliotek, Python znajduje zastosowanie w wielu dziedzinach, takich jak analiza danych, uczenie maszynowe, web development i automatyzacja.
+
+Selenium - narzędzie do automatyzacji przeglądarek internetowych, powszechnie używane do testowania aplikacji webowych. Pozwala na symulowanie interakcji użytkownika z przeglądarką, takich jak klikanie, wypełnianie formularzy i nawigacja po stronach.
+
+Pandas - biblioteka Pythona służącą do manipulacji i analizy danych, szczególnie w formacie tabelarycznym. Umożliwia łatwe operacje na danych, takie jak filtrowanie, grupowanie, agregowanie i przekształcanie danych.
+
+Matplotlib - biblioteka do tworzenia wizualizacji danych w Pythonie, umożliwiająca generowanie wykresów liniowych, słupkowych, histogramów i innych typów wykresów. Jest często używana do prezentacji wyników analizy danych i w celach naukowych.
+
+Beautiful soup - biblioteka Pythona do parsowania dokumentów HTML i XML, używana głównie do web scrapingu. Pozwala na łatwe nawigowanie po strukturze dokumentu, wyszukiwanie elementów i ekstrakcję danych z kodu HTML.
+
+
+### 12. Etap 3.3 - Instrukcja obsługi programu
+
+Aplikacja "imGraphs" wyświetla wizualizacje danych o produkcjach filmowych zescrappowane z serwisu imdb.com.
+W obecnej wersji dostępne są dane z lat 2023-2024.
+
+Po uruchomieniu aplikacji widoczne są trzy przyciski menu odpowiadające kolejno za włączenie trybu wyświetlania wykresów kołowych, słupkowych oraz punktowych.
+
+Wykresy kołowe:
+
+Po przejściu w tryb wykresów kołowych widoczne jest menu tego trybu oferujące opcje wyświetlenia wykresów opisujących:
+- procentową ilość ocen w przedziale lat ​
+- procentową ilość ocen w przedziale gatunków 
+- procentową ilość gatunków w przedziale lat
+
+*Aby wyświetlić porządany wykres należy zaznaczyć kursorem myszki okienko obok jego definicji.*
+
+Po przejściu w tryb wykresów słupkowych dostępne będzie menu z wyborem:
+- średniej ocen na każdy gatunek ​
+- średniej ocen na każdy rok 
+
+W trybie wykresów punktowych menuo oferuje rozkłady w układzie kartezjańskim:
+ - stosunku lat do opinii 
+ - stosunku lat do procentu gatunków

@@ -1,10 +1,13 @@
 import tkinter
 import sys
 from customtkinter import *
+import customtkinter
 
 sys.path.append("..")
 
 from controller.main import plot_chart
+
+customtkinter.set_appearance_mode("dark")
 
 root = CTk()
 root.title("Python project")
