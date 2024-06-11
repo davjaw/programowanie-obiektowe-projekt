@@ -1,5 +1,6 @@
+from view.main import start_app
 def main():
-    print("Hello project")
+    start_app()
 
 
 if __name__ == "__main__":
