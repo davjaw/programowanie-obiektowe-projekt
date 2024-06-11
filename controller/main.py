@@ -5,14 +5,11 @@ from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
 import tkinter as tk
 from customtkinter import *
 
-# Load the CSV file
 file_path = '../scrapedMovies/imdb.csv'
 data = pd.read_csv(file_path)
 
-# Remove any non-numeric values from the 'Rating amount' column
 data = data[data['Rating amount'] != 'Rating amount']
 
-# Adjust the conversion function to handle both string and numeric values
 def convert_rating_amount(amount):
     try:
         if isinstance(amount, str) and 'K' in amount:
@@ -23,10 +20,8 @@ def convert_rating_amount(amount):
 
 data['Rating amount'] = data['Rating amount'].apply(convert_rating_amount)
 
-# Convert the 'Rating' column to numeric, forcing errors to NaN
 data['Rating'] = pd.to_numeric(data['Rating'], errors='coerce')
 
-# Base class for charts
 class ChartStrategy:
     def __init__(self, frame, data):
         self.frame = frame
@@ -35,20 +30,15 @@ class ChartStrategy:
     def plot(self):
         pass
 
-# Concrete strategy for Average Rating per Year Chart
 class AvgRatingPerYearChart(ChartStrategy):
     def plot(self):
-        # Check if self.frame is not None
         if self.frame is not None:
-            # Clear previous content in the frame
             for widget in self.frame.winfo_children():
                 widget.destroy()
 
 
-        # Calculate the average rating by year
         avg_rating_per_year = self.data.groupby('Year')['Rating'].mean().reset_index()
 
-        # Create the column chart
         fig, ax = plt.subplots(figsize=(6, 6))
         ax.set_facecolor("#1b243a")
         ax.bar(avg_rating_per_year['Year'], avg_rating_per_year['Rating'], color='#C0256F')
@@ -59,7 +49,6 @@ class AvgRatingPerYearChart(ChartStrategy):
         ax.tick_params(colors='white')
         for spine in ax.spines.values():
             spine.set_edgecolor('white')
-
         fig.patch.set_facecolor('#1b243a')
         canvas = FigureCanvasTkAgg(fig, master=self.frame)
         canvas.draw()
@@ -67,19 +56,14 @@ class AvgRatingPerYearChart(ChartStrategy):
         canvas.get_tk_widget().pack(side="left", fill=tk.BOTH, expand=1)
         return len(fig.get_children())
 
-# Concrete strategy for Average Rating per Genre Chart
 class AvgRatingPerGenreChart(ChartStrategy):
     def plot(self):
-        # Check if self.frame is not None
         if self.frame is not None:
-            # Clear previous content in the frame
             for widget in self.frame.winfo_children():
                 widget.destroy()
 
-        # Calculate the average rating for each genre
         avg_rating_per_genre = self.data.groupby('Genre')['Rating'].mean().reset_index()
 
-        # Create the column chart
         fig, ax = plt.subplots(figsize=(6, 6))
         ax.set_facecolor("#1b243a")
         ax.bar(avg_rating_per_genre['Genre'], avg_rating_per_genre['Rating'], color='#C0256F')
@@ -98,19 +82,14 @@ class AvgRatingPerGenreChart(ChartStrategy):
         canvas.get_tk_widget().pack(side="left", fill=tk.BOTH, expand=1)
         return len(fig.get_children())
 
-# Concrete strategy for Genre Distribution Chart
 class GenreDistributionChart(ChartStrategy):
     def plot(self):
-        # Check if self.frame is not None
         if self.frame is not None:
-            # Clear previous content in the frame
             for widget in self.frame.winfo_children():
                 widget.destroy()
 
-        # Calculate the percentage of each genre
         genre_counts = self.data['Genre'].value_counts(normalize=True) * 100
 
-        # Create the pie chart
         fig, ax = plt.subplots(figsize=(6, 6))
         ax.set_facecolor("#1b243a")
         ax.pie(genre_counts, labels=genre_counts.index, autopct='%1.1f%%', startangle=90, colors=plt.cm.Paired.colors, textprops={'color':"white"})
@@ -123,20 +102,15 @@ class GenreDistributionChart(ChartStrategy):
         canvas.get_tk_widget().pack(side="left", fill=tk.BOTH, expand=1)
         return len(fig.get_children())
 
-# Concrete strategy for Percentage Distribution of Each Genre per Year
 class GenrePercentagePerYearChart(ChartStrategy):
     def plot(self):
-        # Check if self.frame is not None
         if self.frame is not None:
-            # Clear previous content in the frame
             for widget in self.frame.winfo_children():
                 widget.destroy()
 
-        # Calculate the percentage distribution of each genre per year
         genre_percentage_per_year = self.data.groupby(['Year', 'Genre']).size().unstack(fill_value=0)
         genre_percentage_per_year = genre_percentage_per_year.div(genre_percentage_per_year.sum(axis=1), axis=0) * 100
 
-        # Create the scatter plot
         fig, ax = plt.subplots(figsize=(6, 6))
         ax.set_facecolor("#1b243a")
         for genre in genre_percentage_per_year.columns:
@@ -155,7 +129,6 @@ class GenrePercentagePerYearChart(ChartStrategy):
         canvas.get_tk_widget().configure(background='#1b243a')
         canvas.get_tk_widget().pack(side="top", fill=tk.BOTH, expand=1)
 
-        # Create legend outside of the chart below it
         handles, labels = ax.get_legend_handles_labels()
         fig_legend = plt.figure(figsize=(10, 0.5))
         fig_legend.legend(handles, labels, loc='upper center', ncol=5, fontsize='small', facecolor='#1b243a', edgecolor='white', labelcolor="white")
@@ -166,16 +139,12 @@ class GenrePercentagePerYearChart(ChartStrategy):
         canvas_legend.get_tk_widget().pack(side="top", fill=tk.BOTH, expand=1)
         return len(fig.get_children())
 
-# Concrete strategy for Total Ratings per Year Scatter Plot
 class TotalRatingsPerYearChart(ChartStrategy):
     def plot(self):
-        # Check if self.frame is not None
         if self.frame is not None:
-            # Clear previous content in the frame
             for widget in self.frame.winfo_children():
                 widget.destroy()
         
-        # Sum the rating amounts by year
         ratings_per_year = self.data.groupby('Year')['Rating amount'].sum().reset_index()
 
         def format_yaxis_shorten(x, pos):
@@ -192,7 +161,6 @@ class TotalRatingsPerYearChart(ChartStrategy):
             else:
                 return f'{x:.0f}'
             
-        # Create the scatter plot
         fig, ax = plt.subplots(figsize=(6, 6))
         ax.set_facecolor("#1b243a")
         ax.scatter(ratings_per_year['Year'], ratings_per_year['Rating amount'], color='#C0256F')
@@ -203,7 +171,6 @@ class TotalRatingsPerYearChart(ChartStrategy):
         for spine in ax.spines.values():
             spine.set_edgecolor('white')
 
-        # Set custom formatter for y-axis labels
         formatter = FuncFormatter(format_yaxis_shorten)
         ax.yaxis.set_major_formatter(formatter)
 
@@ -214,19 +181,14 @@ class TotalRatingsPerYearChart(ChartStrategy):
         canvas.get_tk_widget().pack(side="left", fill=tk.BOTH, expand=1)
         return len(fig.get_children())
 
-# Concrete strategy for Percentage of Ratings Based on Genre Pie Chart
 class RatingsPercentagePerGenreChart(ChartStrategy):
     def plot(self):
-        # Check if self.frame is not None
         if self.frame is not None:
-            # Clear previous content in the frame
             for widget in self.frame.winfo_children():
                 widget.destroy()
-        # Calculate the percentage of ratings for each genre
         ratings_per_genre = self.data.groupby('Genre')['Rating amount'].sum()
         ratings_percentage_per_genre = (ratings_per_genre / ratings_per_genre.sum()) * 100
 
-        # Create the pie chart
         fig, ax = plt.subplots(figsize=(6, 6))
         ax.set_facecolor("#1b243a")
         ax.pie(ratings_percentage_per_genre, labels=ratings_percentage_per_genre.index, autopct='%1.1f%%', startangle=90, colors=plt.cm.Paired.colors, textprops={'color':"white"})
@@ -239,20 +201,15 @@ class RatingsPercentagePerGenreChart(ChartStrategy):
         canvas.get_tk_widget().pack(side="left", fill=tk.BOTH, expand=1)
         return len(fig.get_children())
 
-# Concrete strategy for Percentage of Ratings in a Year Pie Chart
 class RatingsPercentagePerYearChart(ChartStrategy):
     def plot(self):
-        # Check if self.frame is not None
         if self.frame is not None:
-            # Clear previous content in the frame
             for widget in self.frame.winfo_children():
                 widget.destroy()
 
-        # Calculate the percentage of ratings for each year
         ratings_per_year = self.data.groupby('Year')['Rating amount'].sum()
         ratings_percentage_per_year = (ratings_per_year / ratings_per_year.sum()) * 100
 
-        # Create the pie chart
         fig, ax = plt.subplots(figsize=(6, 6))
         ax.set_facecolor("#1b243a")
         ax.pie(ratings_percentage_per_year, labels=ratings_percentage_per_year.index, autopct='%1.1f%%', startangle=90, colors=plt.cm.Paired.colors, textprops={'color':"white"})
@@ -265,7 +222,6 @@ class RatingsPercentagePerYearChart(ChartStrategy):
         canvas.get_tk_widget().pack(side="left", fill=tk.BOTH, expand=1)
         return len(fig.get_children())
 
-# Function to plot chart based on the selected strategy
 def plot_chart(chart_type, frame, checkbox):
     if checkbox.get() == 0:
         for widget in frame.winfo_children():
@@ -289,4 +245,3 @@ def plot_chart(chart_type, frame, checkbox):
         return
     strategy.plot()
     return checkbox
-
