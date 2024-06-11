@@ -1,6 +1,7 @@
 import unittest
 import pandas as pd
 from controller.main import GenrePercentagePerYearChart, AvgRatingPerYearChart, AvgRatingPerGenreChart, GenreDistributionChart, TotalRatingsPerYearChart, RatingsPercentagePerGenreChart, RatingsPercentagePerYearChart, plot_chart
+from customtkinter import *
 
 class TestAvgRatingPerYearChart(unittest.TestCase):
     def setUp(self):
@@ -94,14 +95,19 @@ class TestRatingsPercentagePerGenreChart(unittest.TestCase):
 
 class TestRatingsPercentagePerYearChart(unittest.TestCase):
     def setUp(self):
+        class someClass:
+            def get(self):
+                return 1
         data = {
             'Year': [2019, 2019, 2020, 2020, 2021, 2021],
             'Genre': ['Action', 'Comedy', 'Action', 'Drama', 'Comedy', 'Drama'],
             'Rating amount': [2, 20, 3334, 2000, 2500, 500]
         }
         self.data = pd.DataFrame(data)
+        self.checkbox = someClass()
+
     def test_plot(self):
-        generated_chart = plot_chart(None, self.data, None)
+        generated_chart = plot_chart(None, self.data, checkbox=self.checkbox)
         self.assertIsNone(generated_chart)
     
 class TestRatingsPercentagePerYearChartDuo(unittest.TestCase):

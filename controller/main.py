@@ -267,28 +267,26 @@ class RatingsPercentagePerYearChart(ChartStrategy):
 
 # Function to plot chart based on the selected strategy
 def plot_chart(chart_type, frame, checkbox):
-    if checkbox is not None:
-        if checkbox.get() == 0:
-            for widget in frame.winfo_children():
-                widget.destroy()
-            return
+    if checkbox.get() == 0:
+        for widget in frame.winfo_children():
+            widget.destroy()
+        return
+    if chart_type == "avg_rating_per_year":
+        strategy = AvgRatingPerYearChart(frame, data)
+    elif chart_type == "avg_rating_per_genre":
+        strategy = AvgRatingPerGenreChart(frame, data)
+    elif chart_type == "genre_distribution":
+        strategy = GenreDistributionChart(frame, data)
+    elif chart_type == "genre_percentage_per_year":
+        strategy = GenrePercentagePerYearChart(frame, data)
+    elif chart_type == "total_ratings_per_year":
+        strategy = TotalRatingsPerYearChart(frame, data)
+    elif chart_type == "ratings_percentage_per_genre":
+        strategy = RatingsPercentagePerGenreChart(frame, data)
+    elif chart_type == "ratings_percentage_per_year":
+        strategy = RatingsPercentagePerYearChart(frame, data)
     else:
-        if chart_type == "avg_rating_per_year":
-            strategy = AvgRatingPerYearChart(frame, data)
-        elif chart_type == "avg_rating_per_genre":
-            strategy = AvgRatingPerGenreChart(frame, data)
-        elif chart_type == "genre_distribution":
-            strategy = GenreDistributionChart(frame, data)
-        elif chart_type == "genre_percentage_per_year":
-            strategy = GenrePercentagePerYearChart(frame, data)
-        elif chart_type == "total_ratings_per_year":
-            strategy = TotalRatingsPerYearChart(frame, data)
-        elif chart_type == "ratings_percentage_per_genre":
-            strategy = RatingsPercentagePerGenreChart(frame, data)
-        elif chart_type == "ratings_percentage_per_year":
-            strategy = RatingsPercentagePerYearChart(frame, data)
-        else:
-            return
-        strategy.plot()
-        return strategy.plot()
+        return
+    strategy.plot()
+    return checkbox
 
